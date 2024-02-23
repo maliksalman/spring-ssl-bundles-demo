@@ -1,0 +1,8 @@
+base-url: https://server.192.168.86.46.nip.io:8686
+spring:
+  ssl:
+    bundle:
+      pem:
+        client:
+          truststore:
+            certificate: ../certs/client/ca.crt

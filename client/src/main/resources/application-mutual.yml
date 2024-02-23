@@ -1,0 +1,9 @@
+spring:
+  ssl:
+    bundle:
+      pem:
+        client:
+          keystore:
+            certificate: ../certs/client/client.crt
+            privateKey: ../certs/client/client.key
+

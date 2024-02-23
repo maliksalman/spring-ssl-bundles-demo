@@ -1,0 +1,14 @@
+spring:
+  ssl:
+    bundle:
+      pem:
+        server:
+          truststore:
+            certificate: ../certs/server/ca.crt
+          keystore:
+            certificate: ../certs/server/server.crt
+            privateKey: ../certs/server/server.key
+server:
+  ssl:
+    bundle: server
+    client-auth: none
