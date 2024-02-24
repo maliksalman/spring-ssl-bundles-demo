@@ -1,13 +1,15 @@
+certs:
+  basedir: ../certs
 spring:
   ssl:
     bundle:
       pem:
         server:
           truststore:
-            certificate: ../certs/server/ca.crt
+            certificate: ${certs.basedir}/server/ca.crt
           keystore:
-            certificate: ../certs/server/server.crt
-            privateKey: ../certs/server/server.key
+            certificate: ${certs.basedir}/server/server.crt
+            privateKey: ${certs.basedir}/server/server.key
 server:
   ssl:
     bundle: server

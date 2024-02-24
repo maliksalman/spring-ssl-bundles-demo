@@ -4,8 +4,8 @@
 # https://mariadb.com/docs/server/security/data-in-transit-encryption/create-self-signed-certificates-keys-openssl/
 ####################################################################################################################
 
+export DOMAIN=${1:-example.org}
 export SUBJECT="/C=US/ST=MI/L=Canton/O=WidgetSecurityInc/OU=SecurityDept"
-export DOMAIN=192.168.86.46.nip.io
 export SERVER=server
 export CLIENT=client
 

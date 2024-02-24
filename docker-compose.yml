@@ -1,0 +1,59 @@
+---
+version: "3"
+services:
+
+  make-certs:
+    image: maliksalman/jump:v1.3
+    volumes:
+      - generated-certs:/workspace/certs
+      - ./certs/make-certs.sh:/workspace/certs/make-certs.sh
+    command:
+      - sh
+      - -c
+      - |
+        /workspace/certs/make-certs.sh
+        chown -R 1002:1000 /workspace/certs/client 
+        chown -R 1002:1000 /workspace/certs/server 
+
+  server:
+    image: example/spring-ssl-bundles-demo-server:1.0
+    environment:
+      SPRING_PROFILES_ACTIVE: tls,mutual
+      CERTS_BASEDIR: /workspace/certs
+    volumes:
+      - generated-certs:/workspace/certs
+    ports:
+      - "8686:8686"
+    depends_on:
+      make-certs:
+        condition: service_completed_successfully
+    networks:
+      default:
+        aliases:
+          - server.example.org
+
+  client:
+    image: example/spring-ssl-bundles-demo-client:1.0
+    environment:
+      SPRING_PROFILES_ACTIVE: tls,mutual
+      CERTS_BASEDIR: /workspace/certs
+      BASEURL: https://server.example.org:8686
+    volumes:
+      - generated-certs:/workspace/certs
+    ports:
+      - "8080:8080"
+    depends_on:
+      make-certs:
+        condition: service_completed_successfully
+    networks:
+      default:
+        aliases:
+          - client.example.org
+
+volumes:
+  generated-certs:
+
+networks:
+  default:
+    external:
+      name: docker_default

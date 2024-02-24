@@ -13,7 +13,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 public class HeroServiceConfig {
 
     @Bean
-    @Profile(value = "tls")
+    @Profile("tls")
     public RestClient httpsRestClient(
             @Value("${base-url}") String baseUrl,
             RestClient.Builder builder,
@@ -26,7 +26,7 @@ public class HeroServiceConfig {
     }
 
     @Bean
-    @Profile(value = "!tls")
+    @Profile("!tls")
     public RestClient httpRestClient(
             @Value("${base-url}") String baseUrl,
             RestClient.Builder builder) {

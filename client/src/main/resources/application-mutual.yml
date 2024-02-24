@@ -4,6 +4,6 @@ spring:
       pem:
         client:
           keystore:
-            certificate: ../certs/client/client.crt
-            privateKey: ../certs/client/client.key
+            certificate: ${certs.basedir}/client/client.crt
+            privateKey: ${certs.basedir}/client/client.key
 
