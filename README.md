@@ -15,8 +15,8 @@ With SSL bundles, this is a lot easier, especially when those certs were signed 
 
 To experiment, you can run the apps with either of the following spring profile combos (changeable in the `docker-compose.yml` file):
 
-| Description                                                                                                                                                                                             | Client Profiles | Server Profiles |
-|-------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
-| No TLS is involved                                                                                                                                                                                      | `default`       | `default`       |
-| TLS is enabled on the server, client validates the certificate presented by the server                                                                                                                  | `tls`           | `tls`           |
-| Mutual TLS is enabled on the server, client validates the certificate presented by the server. Client also serves a certificate of its own, the server validates it on receiving the request.        | `tls,mutual`    | `tls,mutual`    |
+| Client Profiles | Server Profiles | Description                                                                                                                                                                                  |
+|-----------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `default`       | `default`       | No TLS is involved                                                                                                                                                                           |
+| `tls`           | `tls`           | TLS is enabled on the server, client validates the certificate presented by the server                                                                                                       |
+| `tls,mutual`    | `tls,mutual`    | Mutual TLS is enabled on the server, client validates the certificate presented by the server. Client also serves a certificate of its own, the server validates it on receiving the request |
