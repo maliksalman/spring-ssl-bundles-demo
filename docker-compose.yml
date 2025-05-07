@@ -1,5 +1,4 @@
 ---
-version: "3"
 services:
 
   make-certs:
@@ -18,7 +17,7 @@ services:
   server:
     image: example/spring-ssl-bundles-demo-server:1.0
     environment:
-      SPRING_PROFILES_ACTIVE: tls,mutual
+      SPRING_PROFILES_ACTIVE: tls
       CERTS_BASEDIR: /workspace/certs
     volumes:
       - generated-certs:/workspace/certs
@@ -35,7 +34,7 @@ services:
   client:
     image: example/spring-ssl-bundles-demo-client:1.0
     environment:
-      SPRING_PROFILES_ACTIVE: tls,mutual
+      SPRING_PROFILES_ACTIVE: tls
       CERTS_BASEDIR: /workspace/certs
       BASEURL: https://server.example.org:8686
     volumes:
@@ -55,5 +54,5 @@ volumes:
 
 networks:
   default:
-    external:
-      name: docker_default
+    name: ssl-bundles
+

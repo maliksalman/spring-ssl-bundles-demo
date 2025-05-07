@@ -5,7 +5,7 @@
 ####################################################################################################################
 
 export DOMAIN=${1:-example.org}
-export SUBJECT="/C=US/ST=MI/L=Canton/O=WidgetSecurityInc/OU=SecurityDept"
+export SUBJECT="/C=US/ST=MI/L=Troy/O=MalikSecurityInc/OU=SecurityDept"
 export SERVER=server
 export CLIENT=client
 
